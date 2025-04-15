@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     {{recipe.name}}
     <br><br>
     <img src="{{recipe.image}}" alt="">
@@ -6,4 +6,10 @@
     {{recipe.tags}}
     <br><br>
     {{recipe.prepTimeMinutes}}
+</div> -->
+<div class="card-container">
+    <div>{{recipe.name | uppercase }}</div>
+    <img [src]="recipe.image" alt="">
+    <div><b>Preparation time: </b>{{recipe.prepTimeMinutes}}</div>
+    <button (click)="goToRecipePage()">Tell me more</button>
 </div>
