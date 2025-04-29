@@ -3,3 +3,12 @@
     flex-wrap: wrap;
     gap: 2rem;
 }
+
+.search{
+    display: flex;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+    input{
+        padding: 1rem;
+    }
+}

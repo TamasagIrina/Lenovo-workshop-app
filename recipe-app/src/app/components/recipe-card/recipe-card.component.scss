@@ -1,5 +1,5 @@
 .card-container{
-    background-color: rgb(210, 209, 240);
+    background-color: rgba(139, 188, 215, 0.542);
     width:390px;
     height:450px;
     display:flex;
@@ -15,7 +15,10 @@
     }
     button{
         border-radius: 20px;
-        background-color: rgb(217, 197, 249);
+        background-color: rgba(44, 169, 223, 0.33);
         
     }
+}
+.colorWhite{    
+    color: white;
 }
