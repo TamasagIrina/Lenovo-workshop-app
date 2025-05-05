@@ -41,11 +41,10 @@ export class AddRecipesComponent {
     // sessionStorage.setItem('theme', 'light');
     // this.localaStorageValue=localStorage.getItem('theme');
   
-    console.log('aaaaaaaaaaa')
     if(this.addRecipeForm.valid){ 
-      console.log('bbbbbbbbbbb')
+   
       this.recipeService.addDbRecipes(this.addRecipeForm.value as Omit<Recipe, 'id'>);
-      console.log('ccccccccccccccccc')
+   
     }
   }
 }
