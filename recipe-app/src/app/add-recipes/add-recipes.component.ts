@@ -2,10 +2,15 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RecipesService } from '../services/recipes.service';
 import { Recipe } from '../interfaces/recepe.interface';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BehaviorSubject } from 'rxjs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-recipes',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
   templateUrl: './add-recipes.component.html',
   styleUrl: './add-recipes.component.scss'
 })
@@ -42,9 +47,7 @@ export class AddRecipesComponent {
     // this.localaStorageValue=localStorage.getItem('theme');
   
     if(this.addRecipeForm.valid){ 
-   
       this.recipeService.addDbRecipes(this.addRecipeForm.value as Omit<Recipe, 'id'>);
-   
     }
   }
 }

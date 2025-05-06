@@ -4,19 +4,37 @@
 {{binding}} -->
 
 <form [formGroup]="addRecipeForm" (ngSubmit)="onSubmit()" class="form-container">
-    <label for="">Name</label>
-    <input type="text" formControlName="name"/>
 
-    <label for="">Image Url</label>
-    <input type="text" formControlName="image"/>
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+    
+        <input matInput type="text" formControlName="name" >
+    </mat-form-field> 
 
-    <label for="">Difficulty</label>
-    <input type="text" formControlName="difficulty"/>
+    <mat-form-field appearance="fill">
+        <mat-label>Image Url</mat-label>
+    
+        <input matInput type="text" formControlName="image" >
+    </mat-form-field> 
 
-    <label for="">Preparation time</label>
-    <input type="number" formControlName="prepTimeMinutes"/>
 
-    <button type="submit">Submit</button>
+    <mat-form-field appearance="fill">
+        <mat-label>Difficulty</mat-label>
+    
+        <input matInput type="text" formControlName="difficulty" >
+    </mat-form-field> 
+
+    <mat-form-field appearance="fill">
+        <mat-label>Preparation time</mat-label>
+    
+        <input matInput type="number" formControlName="prepTimeMinutes" >
+    </mat-form-field> 
+
+   
+
+    <button mat-raised-button color="primary" type="submit" [disabled]=" addRecipeForm.invalid">Submit</button>
 </form>
+
+
 
 <div>{{localaStorageValue}}</div>

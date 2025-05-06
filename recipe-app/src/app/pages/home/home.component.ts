@@ -14,47 +14,56 @@ import { db } from '../../db/db';
 })
 export class HomeComponent {
     recipes: Recipe[]=[];
-    dummyRecipes!: Recipe[];
-    fileteredRecipes!: Recipe[];
+    dummyRecipes!: any[];
+    fileteredRecipes!: any[];
     dbRecipes!: any[];
     errorMassage: any='';
     searchValue='';
+    dbS: any;
    
 
-    constructor(recipesService: RecipesService, readonly router: Router){
-      this.recipes=recipesService.recipes;
-      try {
-        recipesService.getAllRecipes().subscribe({
+    constructor(private recipesService: RecipesService, readonly router: Router){}
 
-          next: (responde)=>{
-            console.log(responde)
-            this.dummyRecipes= responde.recipes;
-            this.fileteredRecipes= responde.recipes;
-          }, 
-          error: (err)=>{
-            console.log(err)
-            this.errorMassage=err
-          }
-        })
-      } catch (error) {
-        this.errorMassage=error;
-      }
+    ngOnInit(){
+      // this.recipes=this.recipesService.recipes;
+      // try {
+      //   this.recipesService.getAllRecipes().subscribe({
+
+      //     next: (responde)=>{
+      //       console.log(responde)
+      //       this.dummyRecipes= responde.recipes;
+      //       this.fileteredRecipes= responde.recipes;
+      //     }, 
+      //     error: (err)=>{
+      //       console.log(err)
+      //       this.errorMassage=err
+      //     }
+      //   })
+      // } catch (error) {
+      //   this.errorMassage=error;
+      // }
     
-      db.subscribeQuery({ recipes: {} }, (resp) => {
+      this.dbS = db.subscribeQuery({ recipes: {} }, (resp) => {
         if (resp.error) {
           this.errorMassage=resp.error;
         }
         if (resp.data) {
           this.dbRecipes= resp.data.recipes;
+          this.fileteredRecipes= this.dbRecipes;
+
         }
       });
-      
+
+    }
+
+    ngOnDestroy(){
+       this.dbS();
     }
 
 
 
     filterValues(){
-      this.fileteredRecipes= this.dummyRecipes.filter((recipe) => 
+      this.fileteredRecipes= this.dbRecipes.filter((recipe) => 
       recipe.name.toUpperCase().includes(this.searchValue.toUpperCase()))
     }
 

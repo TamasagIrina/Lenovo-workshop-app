@@ -3,6 +3,7 @@ import { Recipe } from '../interfaces/recepe.interface';
 import { HttpClient } from '@angular/common/http';
 import { db } from '../db/db';
 import { id } from '@instantdb/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,11 @@ export class RecipesService {
   }
 
   addDbRecipes(recipeInput: Omit<Recipe, 'id'>){
+    // const subject= new BehaviorSubject<object>(this.getAllRecipes);
+    // subject.next(recipeInput);
+    // subject.subscribe;
+
+    
     db.transact(
       db.tx.recipes[id()].update({
         name:recipeInput.name,

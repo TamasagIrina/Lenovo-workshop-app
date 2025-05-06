@@ -3,10 +3,12 @@ import { Recipe } from '../../interfaces/recepe.interface';
 import { Route, Router } from '@angular/router';
 import { tick } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-recipe-card',
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatCardModule],
   templateUrl: './recipe-card.component.html',
   styleUrl: './recipe-card.component.scss'
 })

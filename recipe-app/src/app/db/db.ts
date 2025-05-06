@@ -1,7 +1,8 @@
 import { init, i, id, InstaQLEntity } from "@instantdb/core";
 
+
 // ID for app: RecipeApp
-const APP_ID = "8a5bb85d-2276-4c72-98be-fe3c63702da0";
+const APP_ID = '8a5bb85d-2276-4c72-98be-fe3c63702da0';
 
 // Optional: Declare your schema!
 const schema = i.schema({
